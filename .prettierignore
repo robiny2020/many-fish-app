@@ -1,0 +1,17 @@
+# 插件生成的文件
+pages.json
+manifest.json
+
+#
+.hbuilderx
+.vscode/
+pnpm-lock.yaml
+README.md
+
+# 插件生成的文件
+uni_modules/
+libs/
+unpackage/
+
+
+.windsurf/

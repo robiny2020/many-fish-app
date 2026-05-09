@@ -1,0 +1,150 @@
+{
+	"cSpell.words": ["webp"],
+	// Prettier 配置
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"editor.formatOnPaste": true,
+	"editor.formatOnType": false,
+	// Vue 文件格式化配置
+	"[vue]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	// JavaScript 文件格式化配置
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	// TypeScript 文件格式化配置
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	// JSON 文件格式化配置
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	// SCSS 文件格式化配置
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	// CSS 文件格式化配置
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	// HTML 文件格式化配置
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	// Prettier 验证配置
+	"prettier.requireConfig": true,
+	"prettier.useEditorConfig": false,
+	// Vue 语言服务器配置
+	"vetur.format.defaultFormatter.html": "prettier",
+	"vetur.format.defaultFormatter.css": "prettier",
+	"vetur.format.defaultFormatter.postcss": "prettier",
+	"vetur.format.defaultFormatter.scss": "prettier",
+	"vetur.format.defaultFormatter.less": "prettier",
+	"vetur.format.defaultFormatter.stylus": "stylus-supremacy",
+	"vetur.format.defaultFormatter.js": "prettier",
+	"vetur.format.defaultFormatter.ts": "prettier",
+	// TO DO 插件配置
+	"todo-tree.general.tags": [
+		"BUG",
+		"HACK",
+		"FIXME",
+		"TODO",
+		"XXX",
+		"[ ]",
+		"[x]"
+	],
+	"todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^)\\s*($TAGS)|^\\s*- \\[ \\])",
+	"todo-tree.general.statusBar": "total",
+	"todo-tree.tree.showScanModeButton": false,
+	"todo-tree.highlights.defaultHighlight": {
+		"icon": "alert",
+		"type": "text",
+		"foreground": "red",
+		"background": "white",
+		"opacity": 50,
+		"iconColour": "blue"
+	},
+	"todo-tree.highlights.customHighlight": {
+		"TODO": {
+			"icon": "check",
+			"foreground": "#ffcc00",
+			"background": "rgba(255, 204, 0, 0.2)",
+			"iconColour": "#ffcc00"
+		},
+		"FIXME": {
+			"icon": "bug",
+			"foreground": "#ff6b6b",
+			"background": "rgba(255, 107, 107, 0.2)",
+			"iconColour": "#ff6b6b"
+		},
+		"HACK": {
+			"icon": "alert",
+			"foreground": "#ff9500",
+			"background": "rgba(255, 149, 0, 0.2)",
+			"iconColour": "#ff9500"
+		}
+	},
+	// TO DO Highlight 插件配置
+	"todohighlight.isEnable": true,
+	"todohighlight.isCaseSensitive": true,
+	"todohighlight.keywords": [{
+			"text": "TODO:",
+			"color": "#ffcc00",
+			"backgroundColor": "rgba(255, 204, 0, 0.2)",
+			"overviewRulerColor": "#ffcc00"
+		},
+		{
+			"text": "TODO",
+			"color": "#ffcc00",
+			"backgroundColor": "rgba(255, 204, 0, 0.2)",
+			"overviewRulerColor": "#ffcc00"
+		},
+		{
+			"text": "FIXME:",
+			"color": "#ff6b6b",
+			"backgroundColor": "rgba(255, 107, 107, 0.2)",
+			"overviewRulerColor": "#ff6b6b"
+		},
+		{
+			"text": "FIXME",
+			"color": "#ff6b6b",
+			"backgroundColor": "rgba(255, 107, 107, 0.2)",
+			"overviewRulerColor": "#ff6b6b"
+		},
+		{
+			"text": "NOTE:",
+			"color": "#4fc3f7",
+			"backgroundColor": "rgba(79, 195, 247, 0.2)",
+			"overviewRulerColor": "#4fc3f7"
+		},
+		{
+			"text": "HACK:",
+			"color": "#ff9500",
+			"backgroundColor": "rgba(255, 149, 0, 0.2)",
+			"overviewRulerColor": "#ff9500"
+		}
+	],
+	"todohighlight.include": [
+		"**/*.js",
+		"**/*.jsx",
+		"**/*.ts",
+		"**/*.tsx",
+		"**/*.vue",
+		"**/*.html",
+		"**/*.css",
+		"**/*.scss",
+		"**/*.sass",
+		"**/*.less"
+	],
+	"todohighlight.exclude": [
+		"**/node_modules/**",
+		"**/dist/**",
+		"**/build/**",
+		"**/.git/**",
+		"**/.vscode/**"
+	],
+	"github-enterprise.uri": "https://gitee.com"
+}
