@@ -1,17 +1,255 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
+	"pages": [{
+			"path": "pages/tabbar/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "首页",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/tabbar/welfare/index",
+			"style": {
+				"navigationBarTitleText": "福利",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/tabbar/order/index",
+			"style": {
+				"navigationBarTitleText": "订单",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/tabbar/user/index",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/recycle/clothes/index",
+			"style": {
+				"navigationBarTitleText": "旧衣服回收",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/recycle/book/index",
+			"style": {
+				"navigationBarTitleText": "书籍回收",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/recycle/toy/index",
+			"style": {
+				"navigationBarTitleText": "玩具回收",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/recycle/appliance/index",
+			"style": {
+				"navigationBarTitleText": "家电回收",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/recycle/digital/index",
+			"style": {
+				"navigationBarTitleText": "3C数码回收",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/recycle/furniture/index",
+			"style": {
+				"navigationBarTitleText": "家具清运",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/common/login/index",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/common/webview/index",
+			"style": {
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/notify/list/index",
+			"style": {
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/notify/detail/index",
+			"style": {
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/user/profile/index",
+			"style": {
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/order/recycle/list/index",
+			"style": {
+				"navigationBarTitleText": "回收订单列表",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		}, {
+			"path": "pages/order/recycle/detail/index",
+			"style": {
+				"navigationBarTitleText": "回收订单详情",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		}, {
+			"path": "pages/order/goods/list/index",
+			"style": {
+				"navigationBarTitleText": "商品订单列表",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		}, {
+			"path": "pages/order/goods/detail/index",
+			"style": {
+				"navigationBarTitleText": "商品订单详情",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/user/settings/index",
+			"style": {
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/system/index/index",
+			"style": {
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/system/about/index",
+			"style": {
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/system/settings/index",
+			"style": {
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/activity/oasis/index/index",
+			"style": {
+				"navigationBarTitleText": "绿洲计划",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/activity/oasis/record/index",
+			"style": {
+				"navigationBarTitleText": "种树记录",
+				"h5": {
+					"navigationStyle": "custom"
+				}
 			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "多鱼",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"selectedColor": "#0275FE",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/tabbar/index/index",
+				"iconPath": "static/tabBar/index.png",
+				"selectedIconPath": "static/tabBar/index-HL.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/tabbar/welfare/index",
+				"iconPath": "static/tabBar/welfare.png",
+				"selectedIconPath": "static/tabBar/welfare-HL.png",
+				"text": "福利"
+			},
+			{
+				"pagePath": "pages/tabbar/order/index",
+				"iconPath": "static/tabBar/order.png",
+				"selectedIconPath": "static/tabBar/order-HL.png",
+				"text": "订单"
+			},
+			{
+				"pagePath": "pages/tabbar/user/index",
+				"iconPath": "static/tabBar/user.png",
+				"selectedIconPath": "static/tabBar/user-HL.png",
+				"text": "我的"
+			}
+
+		]
 	},
 	"uniIdRouter": {}
 }

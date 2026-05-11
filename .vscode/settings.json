@@ -1,5 +1,8 @@
 {
-	"cSpell.words": ["webp"],
+	"cSpell.words": [
+		"tabbar",
+		"webp"
+	],
 	// Prettier 配置
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.formatOnSave": true,
@@ -7,7 +10,7 @@
 	"editor.formatOnType": false,
 	// Vue 文件格式化配置
 	"[vue]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
 		"editor.formatOnSave": true
 	},
 	// JavaScript 文件格式化配置
