@@ -7,18 +7,28 @@
  * const { showModal } = useModal()
  * const { confirm } = await showModal({ title: '提示', content: '确认删除？' })
  */
-export function useModal() {
+
+import { getCurrentInstance } from 'vue'
+import type { ModalOptions, ModalResult } from '../js_sdk/modal'
+
+export type { ModalOptions, ModalResult }
+
+export interface UseModalReturn {
+  showModal: (options: ModalOptions) => Promise<ModalResult>
+}
+
+export function useModal(): UseModalReturn {
   // #ifdef APP-PLUS
-  const { proxy } = getCurrentInstance()
+  const { proxy } = getCurrentInstance()!
   return {
-    showModal: (options) => proxy.$modal(options),
+    showModal: (options: ModalOptions) => proxy!.$modal(options),
   }
   // #endif
 
   // #ifndef APP-PLUS
   return {
-    showModal: (options) => {
-      return new Promise((resolve) => {
+    showModal: (options: ModalOptions): Promise<ModalResult> => {
+      return new Promise<ModalResult>((resolve) => {
         uni.showModal({
           title: options.title || '',
           content: options.content || '',
@@ -27,7 +37,7 @@ export function useModal() {
           confirmText: options.confirmText || '确定',
           cancelColor: options.cancelColor || '#000000',
           confirmColor: options.confirmColor || '#007AFF',
-          success: (res) => {
+          success: (res: any) => {
             resolve({ confirm: res.confirm, cancel: res.cancel })
           },
         })

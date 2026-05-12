@@ -13,14 +13,17 @@
  * await showModal({ title: '提示', content: '确认删除？' })
  */
 
+import type { App } from 'vue'
+
 // #ifdef APP-PLUS
 import { showModal, hideModal } from './js_sdk/modal'
 // #endif
 
 export { useModal } from './composables/useModal'
+export type { ModalOptions, ModalResult, UseModalReturn } from './composables/useModal'
 
 export default {
-  install(app) {
+  install(app: App): void {
     // #ifdef APP-PLUS
     app.config.globalProperties.$modal = showModal
     app.config.globalProperties.$hideModal = hideModal
