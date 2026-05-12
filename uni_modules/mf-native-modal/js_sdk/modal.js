@@ -2,26 +2,7 @@
  * iOS 风格原生弹窗
  * 基于 plus.nativeObj.View 实现，仅支持 App 端（iOS / Android）
  *
- * @module utils/modal
- * @example
- * // 1. 全局挂载（main.js 已配置）
- * // app.config.globalProperties.$modal = showModal
- *
- * // 2. 组件内使用（<script setup>，推荐通过 composable）
- * import { useModal } from '@/composables/useModal'
- * const { showModal } = useModal()
- * const { confirm } = await showModal({ title: '提示', content: '确认删除？' })
- *
- * // 3. 纯提示（无取消按钮）
- * await showModal({ title: '成功', content: '操作已完成', showCancel: false })
- *
- * // 4. 危险操作（红色确认按钮）
- * await showModal({
- *   title: '警告',
- *   content: '此操作不可撤销',
- *   confirmText: '删除',
- *   confirmColor: '#FF3B30',
- * })
+ * @module mf-native-modal/js_sdk/modal
  */
 
 /* ==================== iOS 设计规范常量 ==================== */
@@ -380,8 +361,8 @@ export function showModal(options = {}) {
           size: LAYOUT.titleSize,
           color: IOS_COLORS.title,
           weight: 'bold',
-          whiteSpace: 'normal',
           align: 'center',
+          overflow: 'ellipsis',
         },
         position: {
           top: LAYOUT.paddingTop + 'px',

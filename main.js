@@ -1,16 +1,12 @@
 import App from './App'
 import store from './store'
-// #ifdef APP-PLUS
-import showModal from './utils/modal'
-// #endif
+import mfNativeModal from '@/uni_modules/mf-native-modal'
 
 import { createSSRApp } from 'vue'
 export function createApp() {
   const app = createSSRApp(App)
   app.use(store)
-  // #ifdef APP-PLUS
-  app.config.globalProperties.$modal = showModal
-  // #endif
+  app.use(mfNativeModal)
   return {
     app,
   }
