@@ -9,13 +9,9 @@
  */
 
 import { getCurrentInstance } from 'vue'
-import type { ModalOptions, ModalResult } from '../js_sdk/modal'
+import type { ModalOptions, ModalResult, UseModalReturn } from '../types'
 
-export type { ModalOptions, ModalResult }
-
-export interface UseModalReturn {
-  showModal: (options: ModalOptions) => Promise<ModalResult>
-}
+export type { ModalOptions, ModalResult, UseModalReturn }
 
 export function useModal(): UseModalReturn {
   // #ifdef APP-PLUS

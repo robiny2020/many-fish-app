@@ -11,17 +11,18 @@
 	</view>
 </template>
 
-<script setup>
+<script setup lang="ts">
+	import { onLoad } from '@dcloudio/uni-app'
 	import { useModal } from '@/composables'
 	const { showModal } = useModal()
 
 	async function handleShowModel() {
 		const { confirm } = await showModal({ title: '提示', content: '确认删除？' })
 		console.log(confirm)
-			confirm&&await showModal({ title: '提示1', content: '确认1删除？' })
-		
+		confirm && (await showModal({ title: '提示1', content: '确认1删除？' }))
 	}
+
 	onLoad(() => {})
 </script>
 
-<style></style>
+<style lang="scss"></style>

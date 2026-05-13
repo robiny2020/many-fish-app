@@ -16,17 +16,16 @@
 import type { App } from 'vue'
 
 // #ifdef APP-PLUS
-import { showModal, hideModal } from './js_sdk/modal'
+import showModal from './js_sdk/modal'
 // #endif
 
 export { useModal } from './composables/useModal'
-export type { ModalOptions, ModalResult, UseModalReturn } from './composables/useModal'
+export type { ModalOptions, ModalResult, UseModalReturn } from './types'
 
 export default {
   install(app: App): void {
     // #ifdef APP-PLUS
     app.config.globalProperties.$modal = showModal
-    app.config.globalProperties.$hideModal = hideModal
     // #endif
   },
 }
