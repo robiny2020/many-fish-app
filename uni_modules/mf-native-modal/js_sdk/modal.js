@@ -5,39 +5,7 @@
  * @module mf-native-modal/js_sdk/modal
  */
 
-import type { ModalOptions, ModalResult } from '../types'
-export type { ModalOptions, ModalResult }
-
 /* eslint-disable no-undef */
-declare const plus: any
-declare function getCurrentPages(): any[]
-
-/** 内部解析后的完整配置 */
-interface ModalConfig {
-  title: string
-  content: string
-  showCancel: boolean
-  cancelText: string
-  confirmText: string
-  cancelColor: string
-  confirmColor: string
-}
-
-/** 文字换行计算结果行 */
-interface WrapLine {
-  type: 'text' | 'break'
-  content: string
-}
-
-/** plus.nativeObj.View 绘制元素（简化类型） */
-interface DrawElement {
-  tag: 'font' | 'rect'
-  id: string
-  text?: string
-  textStyles?: Record<string, string>
-  rectStyles?: Record<string, string>
-  position: Record<string, string>
-}
 
 /* ==================== iOS 设计规范常量 ==================== */
 
@@ -48,7 +16,7 @@ const IOS_COLORS = {
   content: '#000000',
   separator: '#C8C8CA',
   buttonText: '#007AFF',
-} as const
+}
 
 const LAYOUT = {
   widthRatio: 0.72, // 弹窗宽度占屏幕比例（≈ 270pt / 375pt）
@@ -64,16 +32,16 @@ const LAYOUT = {
   contentLineHeight: 18,
   gapTitleContent: 4,
   gapContentBottom: 20,
-} as const
+}
 
 /* ==================== 模块内部状态 ==================== */
 
-let maskLayer: any = null
-let popupView: any = null
-let backButtonHandler: (() => void) | null = null
+let maskLayer = null
+let popupView = null
+let backButtonHandler = null
 let isShowing = false
 let maskVisible = false
-let maskHideTimer: ReturnType<typeof setTimeout> | null = null
+let maskHideTimer = null
 
 // 缓存屏幕尺寸（不会变化，避免每次读取原生属性）
 let screenW = 0
@@ -84,7 +52,7 @@ const CJK_RE = /[\u4e00-\u9fff\u3000-\u303f\uff00-\uffef]/
 const LATIN_RE = /[a-zA-Z0-9]/
 
 // 当前弹窗上下文（供持久化点击处理器引用，避免每次 addEventListener 累加）
-let _resolve: ((result: ModalResult) => void) | null = null
+let _resolve = null
 let _buttonY = 0
 let _popupH = 0
 let _popupW = 0
@@ -92,26 +60,26 @@ let _showCancel = true
 
 /* ==================== 动画工具 ==================== */
 
-const ANIM = { showMs: 300, hideMs: 50, frameMs: 16 } as const
-let animTimers: ReturnType<typeof setInterval>[] = []
+const ANIM = { showMs: 300, hideMs: 50, frameMs: 16 }
+let animTimers = []
 
 /**
  * 清除所有进行中的动画
  */
-function clearAnimations(): void {
+function clearAnimations() {
   animTimers.forEach((t) => clearInterval(t))
   animTimers = []
 }
 
 /**
  * 透明度渐变动画
- * @param view plus.nativeObj.View 实例
- * @param from 起始透明度
- * @param to 目标透明度
- * @param duration 动画时长（ms）
- * @param done 完成回调
+ * @param {any} view plus.nativeObj.View 实例
+ * @param {number} from 起始透明度
+ * @param {number} to 目标透明度
+ * @param {number} duration 动画时长（ms）
+ * @param {Function} [done] 完成回调
  */
-function fadeView(view: any, from: number, to: number, duration: number, done?: () => void): void {
+function fadeView(view, from, to, duration, done) {
   const total = Math.max(Math.round(duration / ANIM.frameMs), 1)
   let frame = 0
   view.setStyle({ opacity: from })
@@ -134,12 +102,12 @@ function fadeView(view: any, from: number, to: number, duration: number, done?: 
  * 初始化弹窗点击事件（仅调用一次）
  * 通过模块变量引用当前上下文，避免每次 showModal 累加 listener
  */
-function initClickHandler(): void {
-  popupView.addEventListener('click', (e: { clientX: number; clientY: number }) => {
+function initClickHandler() {
+  popupView.addEventListener('click', (e) => {
     if (!isShowing || !_resolve) return
     if (e.clientY < _buttonY || e.clientY > _popupH) return
 
-    const result: ModalResult = { confirm: false, cancel: false }
+    const result = { confirm: false, cancel: false }
     if (_showCancel) {
       const halfW = Math.floor(_popupW / 2)
       if (e.clientX < halfW) result.cancel = true
@@ -176,17 +144,17 @@ function initClickHandler(): void {
 
 /**
  * 按像素宽度将文本拆分为多行
- * @param text 原始文本
- * @param maxWidth 行最大像素宽度
- * @param cjkW CJK 字符宽度估值
- * @param latinW 拉丁字符宽度估值
- * @returns 换行后的行数组
+ * @param {string} text 原始文本
+ * @param {number} maxWidth 行最大像素宽度
+ * @param {number} [cjkW=13] CJK 字符宽度估值
+ * @param {number} [latinW=7] 拉丁字符宽度估值
+ * @returns {Array<{type: string, content: string}>} 换行后的行数组
  */
-function wrapText(text: string, maxWidth: number, cjkW = 13, latinW = 7): WrapLine[] {
+function wrapText(text, maxWidth, cjkW = 13, latinW = 7) {
   if (!text) return []
 
   const chars = text.split('')
-  const lines: WrapLine[] = []
+  const lines = []
   let start = 0
   let width = 0
   let latinBuf = 0
@@ -253,9 +221,9 @@ function wrapText(text: string, maxWidth: number, cjkW = 13, latinW = 7): WrapLi
 
 /**
  * 控制物理返回键和 iOS 侧滑返回
- * @param enabled 是否允许返回操作
+ * @param {boolean} enabled 是否允许返回操作
  */
-function setBackEnabled(enabled: boolean): void {
+function setBackEnabled(enabled) {
   try {
     if (!enabled) {
       backButtonHandler = () => {}
@@ -264,7 +232,7 @@ function setBackEnabled(enabled: boolean): void {
         const pages = getCurrentPages()
         const page = pages[pages.length - 1]
         const webview =
-          (page as any)?.$getAppWebview?.() || (page as any)?.$vm?.$mp?.page?.$getAppWebview?.()
+          page?.$getAppWebview?.() || page?.$vm?.$mp?.page?.$getAppWebview?.()
         webview?.setStyle({ popGesture: 'none' })
       }
     } else {
@@ -276,7 +244,7 @@ function setBackEnabled(enabled: boolean): void {
         const pages = getCurrentPages()
         const page = pages[pages.length - 1]
         const webview =
-          (page as any)?.$getAppWebview?.() || (page as any)?.$vm?.$mp?.page?.$getAppWebview?.()
+          page?.$getAppWebview?.() || page?.$vm?.$mp?.page?.$getAppWebview?.()
         webview?.setStyle({ popGesture: 'close' })
       }
     }
@@ -290,7 +258,7 @@ function setBackEnabled(enabled: boolean): void {
 /**
  * 关闭当前弹窗
  */
-export function hideModal(): void {
+export function hideModal() {
   if (maskHideTimer) {
     clearTimeout(maskHideTimer)
     maskHideTimer = null
@@ -314,17 +282,24 @@ export function hideModal(): void {
 
 /**
  * 显示 iOS 风格原生弹窗
- * @param options 弹窗配置
- * @returns Promise，resolve 时返回用户点击结果
+ * @param {Object} [options] 弹窗配置
+ * @param {string} [options.title] 标题
+ * @param {string} [options.content] 内容
+ * @param {boolean} [options.showCancel] 是否显示取消按钮
+ * @param {string} [options.cancelText] 取消按钮文字
+ * @param {string} [options.confirmText] 确认按钮文字
+ * @param {string} [options.cancelColor] 取消按钮颜色
+ * @param {string} [options.confirmColor] 确认按钮颜色
+ * @returns {Promise<{confirm: boolean, cancel: boolean}>} 用户点击结果
  */
-export function showModal(options: ModalOptions = {}): Promise<ModalResult> {
+export function showModal(options = {}) {
   if (isShowing) hideModal()
   if (maskHideTimer) {
     clearTimeout(maskHideTimer)
     maskHideTimer = null
   }
 
-  const config: ModalConfig = {
+  const config = {
     title: options.title ?? '',
     content: options.content ?? '',
     showCancel: options.showCancel !== false,
@@ -334,7 +309,7 @@ export function showModal(options: ModalOptions = {}): Promise<ModalResult> {
     confirmColor: options.confirmColor || IOS_COLORS.buttonText,
   }
 
-  return new Promise<ModalResult>((resolve) => {
+  return new Promise((resolve) => {
     // 缓存屏幕尺寸
     if (!screenW) {
       screenW = plus.screen.resolutionWidth
@@ -378,7 +353,7 @@ export function showModal(options: ModalOptions = {}): Promise<ModalResult> {
 
     /* ---- 构建绘制元素 ---- */
 
-    const draws: DrawElement[] = []
+    const draws = []
 
     // 标题
     if (config.title) {

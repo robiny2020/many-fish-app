@@ -13,8 +13,6 @@
 	"license": "ISC",
 	"packageManager": "pnpm@10.33.3",
 	"dependencies": {
-		"@dcloudio/uni-app": "2.0.2-5000720260410001",
-		"@dcloudio/vite-plugin-uni": "3.0.0-alpha-3000020210521001",
 		"pinia": "^3.0.4",
 		"pinia-plugin-persistedstate": "^4.7.1",
 		"vue": "^3.5.34"
@@ -22,7 +20,6 @@
 	"devDependencies": {
 		"@commitlint/cli": "^21.0.0",
 		"@commitlint/config-conventional": "^21.0.0",
-		"@dcloudio/types": "^3.4.31",
 		"eslint": "^10.3.0",
 		"eslint-plugin-vue": "^10.9.1",
 		"lint-staged": "^17.0.3",
