@@ -1,0 +1,43 @@
+.main-action {
+  width: 702rpx;
+  margin: 0 auto 20rpx;
+
+  &__btn {
+    width: 600rpx;
+    height: 96rpx;
+    background: linear-gradient(135deg, #4a90ff 0%, #2468f2 100%);
+    border-radius: 48rpx;
+    box-shadow: 0 8rpx 24rpx rgba(36, 104, 242, 0.35);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+
+    &:active {
+      transform: scale(0.95);
+      box-shadow: 0 4rpx 12rpx rgba(36, 104, 242, 0.25);
+    }
+
+    &--animate {
+      animation: pulse-breathe 2.4s ease-in-out infinite;
+    }
+  }
+
+  &__text {
+    font-size: 34rpx;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 2rpx;
+  }
+}
+
+@keyframes pulse-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 8rpx 24rpx rgba(36, 104, 242, 0.35);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 12rpx 36rpx rgba(36, 104, 242, 0.5);
+  }
+}

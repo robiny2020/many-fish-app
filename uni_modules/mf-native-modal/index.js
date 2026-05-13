@@ -22,9 +22,9 @@ import showModal from './js_sdk/modal.js'
 export { useModal } from './composables/useModal'
 
 export default {
-  install(app): void {
-    // #ifdef APP-PLUS
-    app.config.globalProperties.$modal = showModal
-    // #endif
-  },
+	install(app) { 
+		// #ifdef APP-PLUS
+		app.config.globalProperties.$modal = showModal
+		// #endif
+	},
 }

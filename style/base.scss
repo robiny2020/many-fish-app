@@ -1,0 +1,118 @@
+:root {
+  --max-width: 750px;
+}
+// #ifdef H5
+html {
+  background: #f8f8f8;
+}
+body {
+  width: 100%;
+  height: 100%;
+  max-width: var(--max-width);
+  margin: auto !important;
+  position: relative;
+}
+// #endif
+
+:not(not) {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  button {
+    margin: 0;
+    padding: 0;
+    &:after {
+      border: none;
+    }
+  }
+}
+page {
+  background-color: #f5f5f5;
+}
+
+.web-arrow {
+  --arrow-size: 14rpx;
+  --arrow-color: #999999;
+  --arrow-rotate: 45deg;
+  display: block;
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  position: relative;
+  transform: rotate(var(--arrow-rotate));
+  margin-left: 8rpx;
+  transition: 0.3s all;
+  &::after {
+    content: ' ';
+    width: var(--arrow-size);
+    height: var(--arrow-size);
+    border-top: 2rpx solid var(--arrow-color);
+    border-right: 2rpx solid var(--arrow-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-72%, -28%);
+  }
+}
+.safe-bottom {
+  box-sizing: content-box;
+  padding-bottom: 0;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 页面弹窗遮罩 */
+.web-mask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: var(--max-width);
+  height: 100%;
+  margin: 0 auto;
+  background: rgba($color: #000000, $alpha: 0.6);
+  z-index: 996;
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0.3;
+    /*设置为正数则底部弹出来，负数则相反*/
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    /*设置为正数则底部弹出来，负数则相反*/
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}
+/* // 上滑 */
+.slide_up {
+  animation: slideUp 0.3s ease-in both;
+}
+
+// 超出部分隐藏显示省略号
+@for $lines from 1 through 5 {
+  .ellipsis-#{$lines} {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @if $lines == 1 {
+      white-space: nowrap;
+    } @else {
+      display: -webkit-box;
+      word-break: break-word;
+      -webkit-line-clamp: $lines;
+      -webkit-box-orient: vertical;
+    }
+  }
+}
