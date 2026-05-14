@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "skills": {
+    "pinia": {
+      "source": "uni-helper/skills",
+      "sourceType": "github",
+      "skillPath": "skills/pinia/SKILL.md",
+      "computedHash": "7e41d9a23bcfb625be797fa42a851fa7eaf07a8fb4a0b885f7a3547720e7ef39"
+    },
+    "uni-app": {
+      "source": "uni-helper/skills",
+      "sourceType": "github",
+      "skillPath": "skills/uniapp/SKILL.md",
+      "computedHash": "7fc7ec0b7e578553db961eda533a82193ccb59553f97b0fc0134f9e0a75703bb"
+    },
+    "uni-helper": {
+      "source": "uni-helper/skills",
+      "sourceType": "github",
+      "skillPath": "skills/uni-helper/SKILL.md",
+      "computedHash": "53b879ac621666401741b70e963cfad2f15553798aefc810d8a358ed1a59e036"
+    },
+    "unocss": {
+      "source": "uni-helper/skills",
+      "sourceType": "github",
+      "skillPath": "skills/unocss/SKILL.md",
+      "computedHash": "e36abea303e47d96a4d97017c8146d4ccb996abaf52090aa048be2a291f1d326"
+    },
+    "vite": {
+      "source": "uni-helper/skills",
+      "sourceType": "github",
+      "skillPath": "skills/vite/SKILL.md",
+      "computedHash": "8e190c3bcc18634fdcb7a022c476d052fb58d2e2cae6926303e3e662e94a18ee"
+    },
+    "vue": {
+      "source": "uni-helper/skills",
+      "sourceType": "github",
+      "skillPath": "skills/vue/SKILL.md",
+      "computedHash": "021e75c0287b21fec6b3a5077d9a70065cfbf6f81d38266dbe8c974fb282db76"
+    },
+    "vue-best-practices": {
+      "source": "uni-helper/skills",
+      "sourceType": "github",
+      "skillPath": "skills/vue-best-practices/SKILL.md",
+      "computedHash": "4a9a9384210c175907122844c4e2493f4430674dc6891ade4f158bdda4c258f4"
+    },
+    "vueuse-functions": {
+      "source": "uni-helper/skills",
+      "sourceType": "github",
+      "skillPath": "skills/vueuse-functions/SKILL.md",
+      "computedHash": "e8c7e170ac918258436ab3a45382c4dda1e961d038704993f5e972a5397c7e45"
+    },
+    "web-design-guidelines": {
+      "source": "uni-helper/skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "85e9bd44d7c9c590ff294bcb34913afb0f9ce0d50f50ee6e38c4694a3e62c9a9"
+    }
+  }
+}
