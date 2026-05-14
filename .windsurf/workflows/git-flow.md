@@ -49,6 +49,16 @@ mcp3_git_diff_staged(repo_path=REPO_PATH)
 mcp3_git_diff_unstaged(repo_path=REPO_PATH)
 ```
 
+## 步骤 3.5：更新项目文档
+
+读取 diff 完成后，执行 `/update-docs` 工作流：
+
+1. 分析 diff 涉及的模块，判断是否需要更新 `docs/` 下的文档
+2. 如果涉及已映射模块（`api/`、`utils/`、`store/`、`config/` 等），按 `/update-docs` 规则增量更新对应文档
+3. 文档变更完成后，将 `docs/` 下的变更文件加入本次提交的文件列表
+
+> 如果 diff 只涉及 `pages/`、样式微调、配置文件等非核心模块，可跳过文档更新。
+
 ## 步骤 4：生成 Commit Message
 
 根据 diff 内容，按 **Conventional Commits** 规范生成 commit message。
