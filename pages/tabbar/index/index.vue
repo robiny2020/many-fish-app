@@ -1,5 +1,9 @@
 <template>
-  <GoBack />
+  <NavBar
+    ref="navBarRef"
+    :showBack="false"
+    scrollShow
+  />
   <TopBanner :list="bannerList" />
   <MainAction />
   <MoreServices :list="serviceList" />
@@ -7,7 +11,8 @@
 
 <script setup>
   import { TopBanner, MainAction, MoreServices } from './components'
-  import { GoBack } from '@/components'
+  import { NavBar } from '@/components'
+  import { usePageScroll } from '@/composables'
 
   const bannerList = ref([
     {
@@ -43,6 +48,7 @@
     { icon: '', label: '奢侈品', link: '' },
     { icon: '', label: '墨盒回收', link: '' },
   ])
+  const { navBarRef } = usePageScroll()
 </script>
 
 <style lang="scss" scoped></style>

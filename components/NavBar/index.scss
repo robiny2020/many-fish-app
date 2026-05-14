@@ -1,0 +1,82 @@
+.nav-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 990;
+  transition: opacity 0.3s ease;
+
+  &__status-bar {
+    width: 100%;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    height: 88rpx;
+    padding: 0 24rpx;
+  }
+
+  // 左侧区域（GoBack 或插槽）
+  &__left {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  // 中间标题区域
+  &__center {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__title {
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  &__title-image {
+    height: 48rpx;
+  }
+
+  // 右侧插槽区域
+  &__right {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  // 无返回按钮模式：左中合并
+  &__merged {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &__merged-title {
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__merged-image {
+    height: 52rpx;
+  }
+
+  // 占位元素（撑起页面内容，防止被 fixed 导航遮挡）
+  &__placeholder {
+    width: 100%;
+  }
+}
