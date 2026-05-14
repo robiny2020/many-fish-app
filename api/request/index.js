@@ -1,4 +1,4 @@
-import WxRequest from './core'
+import UniRequest from './core'
 import storage from '@/utils/storage'
 import emitter from '@/utils/event-emitter'
 import {
@@ -9,7 +9,7 @@ import {
 } from '@/config'
 
 // 1) 创建实例
-const http = new WxRequest({
+const http = new UniRequest({
   baseURL: 'https://api.example.com',
   timeout: 15000,
   isLoading: true,

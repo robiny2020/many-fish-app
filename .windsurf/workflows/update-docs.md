@@ -86,7 +86,7 @@ docs/
 
 | 模块 | 文档 | 说明 |
 |------|------|------|
-| 请求模块 | [request.md](./request.md) | WxRequest 封装、拦截器、Token 刷新队列 |
+| 请求模块 | [request.md](./request.md) | UniRequest 封装、拦截器、Token 刷新队列 |
 | 状态管理 | [store.md](./store.md) | Pinia store 定义与用法 |
 | 工具函数 | [utils.md](./utils.md) | event-emitter、storage、auth 等 |
 | ... | ... | ... |

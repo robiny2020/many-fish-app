@@ -1,6 +1,6 @@
 # 请求模块（api/request）
 
-基于微信小程序原生能力（`wx.request` / `wx.uploadFile`）的轻量请求封装，API 风格贴近 axios。内置全局 Loading 队列、请求/响应拦截器、Token 自动刷新队列，开箱即用。
+基于微信小程序原生能力（`uni.request` / `uni.uploadFile`）的轻量请求封装，API 风格贴近 axios。内置全局 Loading 队列、请求/响应拦截器、Token 自动刷新队列，开箱即用。
 
 ## 目录结构
 
@@ -8,7 +8,7 @@
 api/
 ├── index.js                  # API 统一出口（按业务模块聚合）
 └── request/
-    ├── core.js               # WxRequest 核心类
+    ├── core.js               # UniRequest 核心类
     └── index.js              # 实例创建、拦截器、Token 刷新队列
 config/
 └── constant.js               # 常量定义（存储键、事件名）
@@ -22,7 +22,7 @@ utils/
 - **全局默认配置** — baseURL、header、timeout、isLoading
 - **请求/响应拦截器** — 函数式，在发送前/收到后统一处理
 - **全局 Loading 队列** — 多请求合并展示，避免频繁闪烁
-- **上传能力** — 支持 `wx.uploadFile` 分支
+- **上传能力** — 支持 `uni.uploadFile` 分支
 - **中断请求** — Promise 暴露 `abort()` / `cancel()`，内部调用 `RequestTask.abort()`
 - **401 Token 刷新队列** — 基于发布订阅，首个 401 触发刷新，并发请求自动挂起等待重试
 - **与业务解耦** — 只包含网络、Loading、鉴权管理，可自由接入日志、埋点、上报
@@ -72,9 +72,9 @@ const res = await getUserInfo()
 ### 实例化
 
 ```js
-import WxRequest from '@/api/request/core'
+import UniRequest from '@/api/request/core'
 
-const http = new WxRequest(options)
+const http = new UniRequest(options)
 ```
 
 | 参数        | 类型      | 默认值                                   | 说明                       |
@@ -86,15 +86,15 @@ const http = new WxRequest(options)
 
 ### 请求方法
 
-| 方法      | 签名                              | 说明                                |
-| --------- | --------------------------------- | ----------------------------------- |
-| `get`     | `(url, data?, config?)`           | GET 请求                            |
-| `post`    | `(url, data?, config?)`           | POST 请求                           |
-| `put`     | `(url, data?, config?)`           | PUT 请求                            |
-| `delete`  | `(url, data?, config?)`           | DELETE 请求                         |
-| `upload`  | `(url, filePath, name?, config?)` | 文件上传（wx.uploadFile）           |
-| `request` | `(config)`                        | 基础请求，config 同 wx.request 参数 |
-| `all`     | `(...promises)`                   | `Promise.all` 封装                  |
+| 方法      | 签名                              | 说明                                 |
+| --------- | --------------------------------- | ------------------------------------ |
+| `get`     | `(url, data?, config?)`           | GET 请求                             |
+| `post`    | `(url, data?, config?)`           | POST 请求                            |
+| `put`     | `(url, data?, config?)`           | PUT 请求                             |
+| `delete`  | `(url, data?, config?)`           | DELETE 请求                          |
+| `upload`  | `(url, filePath, name?, config?)` | 文件上传（uni.uploadFile）           |
+| `request` | `(config)`                        | 基础请求，config 同 uni.request 参数 |
+| `all`     | `(...promises)`                   | `Promise.all` 封装                   |
 
 ### 返回值
 
@@ -239,12 +239,12 @@ const res = await http.upload('/file/upload', tempFilePath, 'file', {
 })
 ```
 
-- 上传走 `wx.uploadFile` 分支，响应 `data` 自动 `JSON.parse`
+- 上传走 `uni.uploadFile` 分支，响应 `data` 自动 `JSON.parse`
 - 上传请求默认不参与全局 Loading 队列
 
 ## 全局 Loading 策略
 
-1. 首个请求入队时调用 `wx.showLoading({ title: '加载中...' })`
+1. 首个请求入队时调用 `uni.showLoading({ title: '加载中...' })`
 2. 每个请求完成后出队
 3. 队列清空后延迟隐藏，减少闪烁
 4. 单个请求可通过 `isLoading: false` 禁用：

@@ -1,10 +1,10 @@
-// 微信小程序 wx.request 封装
+// 微信小程序 uni.request 封装
 // - 支持全局默认配置（baseURL、header、超时、是否展示全局 loading）
 // - 支持请求/响应拦截钩子（与 axios 类似）
 // - 内置全局 loading 队列：多请求合并展示，避免频繁闪烁
-// - 支持上传分支（wx.uploadFile）与普通请求分支（wx.request）
+// - 支持上传分支（uni.uploadFile）与普通请求分支（uni.request）
 // - 返回的 Promise 暴露 abort/cancel 方法：直接调用底层 RequestTask/UploadTask.abort() 中断请求
-class WxRequest {
+class UniRequest {
   constructor(params = {}) {
     // 默认配置，可在实例化时通过 params 覆盖
     this.defaults = Object.assign(
@@ -39,7 +39,7 @@ class WxRequest {
     // 是否参与全局 loading 队列（文件上传默认不展示）
     const shouldQueue = options.isLoading && options.method !== this.UPLOAD_METHOD
     if (shouldQueue) {
-      if (this.queue.length === 0) wx.showLoading({ title: '加载中...' })
+      if (this.queue.length === 0) uni.showLoading({ title: '加载中...' })
       this.queue.push('request')
     }
     // 请求前拦截
@@ -67,7 +67,7 @@ class WxRequest {
       abortFn = onAbort
       // 上传分支
       if (options.method === this.UPLOAD_METHOD) {
-        task = wx.uploadFile({
+        task = uni.uploadFile({
           ...options,
           success: (res) => {
             if (aborted || finished) return
@@ -87,7 +87,7 @@ class WxRequest {
         })
       } else {
         // 普通请求分支
-        task = wx.request({
+        task = uni.request({
           ...options,
           success: (res) => {
             if (aborted || finished) return
@@ -106,7 +106,7 @@ class WxRequest {
             if (shouldQueue) {
               this.queue.pop()
               this.timer = setTimeout(() => {
-                this.queue.length === 0 && wx.hideLoading()
+                this.queue.length === 0 && uni.hideLoading()
                 clearTimeout(this.timer)
               }, 1)
             }
@@ -142,4 +142,4 @@ class WxRequest {
   }
 }
 
-export default WxRequest
+export default UniRequest
