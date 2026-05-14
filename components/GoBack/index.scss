@@ -1,0 +1,17 @@
+.go-back {
+  width: 72rpx;
+  height: 72rpx;
+  cursor: pointer;
+
+  &--float {
+    position: fixed;
+    // 默认位置：状态栏下方 + 左侧间距
+    top: calc(var(--status-bar-height, 44px) + 16rpx);
+    left: 24rpx;
+  }
+
+  &__icon {
+    width: 40rpx;
+    height: 40rpx;
+  }
+}

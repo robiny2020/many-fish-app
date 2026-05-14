@@ -177,7 +177,7 @@
     <uni-adapt-pc></uni-adapt-pc>
     <script>
       ;(function () {
-        if (window.innerWidth > 750) return
+        if (window.innerWidth < 750) return
         var container = document.createElement('div')
         container.className = 'container'
         var iframe = document.createElement('iframe')
