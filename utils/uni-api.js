@@ -39,3 +39,26 @@ export async function uniLogin() {
     })
   })
 }
+
+/**
+ * 显示成功提示
+ * @param {String} title - 提示文字
+ * @param {Object} [options] - 额外配置，透传给 uni.showToast
+ */
+export function uniToast(title, options = {}) {
+  uni.showToast({
+    title,
+    icon: 'none',
+    ...options,
+  })
+}
+
+export function uniSetClipboardData(data, options = {}) {
+  uni.setClipboardData({
+    data,
+    success: () => {
+      uniToast('复制成功！')
+    },
+    ...options,
+  })
+}

@@ -212,6 +212,24 @@
 					"navigationStyle": "custom"
 				}
 			}
+		},
+		{
+			"path": "pages/address/list/index",
+			"style": {
+				"navigationBarTitleText": "地址簿",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
+		},
+		{
+			"path": "pages/address/edit/index",
+			"style": {
+				"navigationBarTitleText": "编辑地址",
+				"h5": {
+					"navigationStyle": "custom"
+				}
+			}
 		}
 	],
 	"globalStyle": {
