@@ -18,28 +18,8 @@
 | 代码规范 | ESLint + Prettier + Commitlint | Conventional Commits |
 
 ## 目录结构约定
+- [目录结构约定](../directory-structure.md) 
 
-```text
-api/                    → 接口层（request/ 核心封装 + 业务 API 按模块拆分）
-components/             → 全局公共组件
-composables/            → 组合式函数
-config/                 → 常量定义、配置项
-docs/                   → 项目文档（按模块划分，详见 docs/README.md）
-pages/                  → 页面（按业务模块组织子目录）
-  tabbar/               → Tab 页面（首页、福利、订单、我的）
-  recycle/              → 回收业务页（旧衣、书籍、玩具、家电、数码、家具）
-  order/                → 订单详情页
-  common/               → 通用页（登录、webview）
-  user/                 → 用户相关页
-  system/               → 系统设置页
-  activity/             → 活动页（绿洲计划等）
-  notify/               → 通知页
-static/                 → 静态资源
-store/                  → Pinia store（按功能拆分：system、user、auth、base）
-style/                  → 全局样式
-uni_modules/            → uni-app 插件
-utils/                  → 工具函数（auth、event-emitter、storage）
-```
 
 ## 编码规范
 
@@ -64,6 +44,32 @@ utils/                  → 工具函数（auth、event-emitter、storage）
 - 尺寸单位使用 `rpx`（750rpx = 屏幕宽度），保证多端适配
 - 全局 SCSS 变量定义在 `uni.scss`，无需 import 即可使用
 - 颜色变量前缀 `$uni-color-`，字体 `$uni-font-size-`，间距 `$uni-spacing-`
+- 全局样式入口为 `style/index.scss`，包含 `base.scss` 和 `flex.scss`
+
+#### 全局工具类（`style/`）
+
+项目提供了一套全局 CSS 工具类，编写样式时应优先复用，避免重复声明：
+
+- **Flex 布局类**（`style/flex.scss`，UnoCSS 风格）：
+  - 容器：`flex`、`inline-flex`
+  - 方向：`flex-row`、`flex-col`、`flex-row-reverse`、`flex-col-reverse`
+  - 换行：`flex-wrap`、`flex-nowrap`、`flex-wrap-reverse`
+  - 主轴对齐：`justify-start`、`justify-center`、`justify-end`、`justify-between`、`justify-around`、`justify-evenly`
+  - 交叉轴对齐：`items-start`、`items-center`、`items-end`、`items-baseline`、`items-stretch`
+  - 弹性属性：`flex-1`、`flex-auto`、`flex-none`、`flex-grow`、`flex-shrink-0`
+  - **常用组合类**（推荐优先使用）：
+    - `flex-center` — 水平垂直居中
+    - `flex-center-col` — 纵向居中
+    - `flex-between` — 两端对齐 + 垂直居中
+    - `flex-start` / `flex-end` — 左/右对齐 + 垂直居中
+    - `flex-around` / `flex-evenly` — 环绕/均匀分布
+    - 以上均有 `-col` 纵向变体
+- **基础工具类**（`style/base.scss`）：
+  - `safe-bottom` — 安全区底部适配（`env(safe-area-inset-bottom)`）
+  - `web-mask` — 页面遮罩层
+  - `slide_up` — 底部上滑动画
+  - `web-arrow` — CSS 箭头（支持 `--arrow-size`、`--arrow-color`、`--arrow-rotate` 变量）
+  - `ellipsis-{1~5}` — 文本溢出省略（单行/多行）
 
 ### 请求与鉴权
 
