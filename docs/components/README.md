@@ -12,6 +12,9 @@ components/
 ├── NavBar/
 │   ├── index.vue       # NavBar 顶部导航栏组件
 │   └── index.scss      # 组件样式
+├── MfPopup/
+│   ├── index.vue       # MfPopup 弹层组件
+│   └── index.scss      # 组件样式
 ├── PhoneLoginButton/
 │   ├── index.vue       # 微信手机号登录按钮组件
 │   └── index.scss      # 组件样式
@@ -24,4 +27,5 @@ components/
 | --- | --- | --- |
 | GoBack | [GoBack.md](./GoBack.md) | 返回/首页导航按钮 |
 | NavBar | [NavBar.md](./NavBar.md) | 顶部导航栏（左中右三栏） |
+| MfPopup | [MfPopup.md](./MfPopup.md) | 多方向弹层（bottom/top/left/right/center） |
 | PhoneLoginButton | [PhoneLoginButton.md](./PhoneLoginButton.md) | 微信手机号快捷登录按钮 |

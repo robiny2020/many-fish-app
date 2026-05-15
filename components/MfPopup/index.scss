@@ -1,0 +1,114 @@
+.mf-popup {
+  &__mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 996;
+    opacity: 0;
+    transition-property: opacity;
+    transition-timing-function: ease;
+
+    &--visible {
+      opacity: 1;
+    }
+  }
+
+  &__content {
+    position: fixed;
+    z-index: 997;
+    transition-property: transform, opacity;
+    transition-timing-function: cubic-bezier(0.36, 0.66, 0.04, 1);
+    background-color: #ffffff;
+
+    // 各方向默认定位 & 初始状态
+    &--bottom {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 24rpx 24rpx 0 0;
+      transform: translateY(100%);
+    }
+
+    &--top {
+      left: 0;
+      right: 0;
+      top: 0;
+      border-radius: 0 0 24rpx 24rpx;
+      transform: translateY(-100%);
+    }
+
+    &--left {
+      left: 0;
+      top: 0;
+      bottom: 0;
+      transform: translateX(-100%);
+    }
+
+    &--right {
+      right: 0;
+      top: 0;
+      bottom: 0;
+      transform: translateX(100%);
+    }
+
+    &--center {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 0;
+      border-radius: 24rpx;
+      max-width: 80%;
+    }
+
+    // 各方向显示状态
+    &--visible {
+      &.mf-popup__content--bottom,
+      &.mf-popup__content--top {
+        transform: translateY(0);
+      }
+
+      &.mf-popup__content--left {
+        transform: translateX(0);
+      }
+
+      &.mf-popup__content--right {
+        transform: translateX(0);
+      }
+
+      &.mf-popup__content--center {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 24rpx;
+    right: 24rpx;
+    width: 48rpx;
+    height: 48rpx;
+    z-index: 1;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 32rpx;
+      height: 3rpx;
+      background-color: #999999;
+      border-radius: 2rpx;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}
