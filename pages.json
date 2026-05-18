@@ -244,26 +244,26 @@
 		"backgroundColor": "#ffffff",
 		"list": [{
 				"pagePath": "pages/tabbar/index/index",
-				"iconPath": "static/tabBar/index.png",
-				"selectedIconPath": "static/tabBar/index-HL.png",
+				"iconPath": "static/tabbar/index.png",
+				"selectedIconPath": "static/tabbar/index-HL.png",
 				"text": "首页"
 			},
 			{
 				"pagePath": "pages/tabbar/welfare/index",
-				"iconPath": "static/tabBar/welfare.png",
-				"selectedIconPath": "static/tabBar/welfare-HL.png",
+				"iconPath": "static/tabbar/welfare.png",
+				"selectedIconPath": "static/tabbar/welfare-HL.png",
 				"text": "福利"
 			},
 			{
 				"pagePath": "pages/tabbar/order/index",
-				"iconPath": "static/tabBar/order.png",
-				"selectedIconPath": "static/tabBar/order-HL.png",
+				"iconPath": "static/tabbar/order.png",
+				"selectedIconPath": "static/tabbar/order-HL.png",
 				"text": "订单"
 			},
 			{
 				"pagePath": "pages/tabbar/user/index",
-				"iconPath": "static/tabBar/user.png",
-				"selectedIconPath": "static/tabBar/user-HL.png",
+				"iconPath": "static/tabbar/user.png",
+				"selectedIconPath": "static/tabbar/user-HL.png",
 				"text": "我的"
 			}
 
