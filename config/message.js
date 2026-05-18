@@ -99,7 +99,7 @@ export const MESSAGE_TYPE_MAP = {
   [MESSAGE_TYPE.ECO_FUND]: {
     label: '环保金',
     icon: 'eco-fund',
-    color: '#34C759',
+    color: '#674AF4',
   },
   [MESSAGE_TYPE.SYSTEM]: {
     label: '系统通知',
