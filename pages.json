@@ -109,6 +109,8 @@
 		{
 			"path": "pages/notify/list/index",
 			"style": {
+				"navigationBarTitleText": "消息中心",
+				"enablePullDownRefresh": true,
 				"h5": {
 					"navigationStyle": "custom"
 				}
@@ -117,6 +119,7 @@
 		{
 			"path": "pages/notify/detail/index",
 			"style": {
+				"navigationBarTitleText": "消息详情",
 				"h5": {
 					"navigationStyle": "custom"
 				}
