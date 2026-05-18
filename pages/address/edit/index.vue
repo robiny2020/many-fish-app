@@ -15,6 +15,7 @@
           placeholder="「粘贴识别」或输入文本，智能拆分姓名、电话和地址"
           placeholder-class="smart-area__placeholder"
           :maxlength="500"
+          :focus="smartFocused"
           auto-height
           @focus="smartFocused = true"
           @blur="smartFocused = false"
@@ -177,7 +178,13 @@
 </template>
 
 <script setup>
-  import RegionPicker from './components/RegionPicker.vue'
+  import RegionPicker from './components/RegionPicker/index.vue'
+  import { useAddressStore } from '@/store'
+  import { uniToast } from '@/utils/uni-api'
+
+  const addressStore = useAddressStore()
+  const { setAddressInfo, setAddressList } = addressStore
+  const { addressList } = storeToRefs(addressStore)
 
   /** 页面参数 —— id 存在时为编辑模式 */
   const addressId = ref('')
@@ -249,6 +256,7 @@
 
   /** 粘贴并识别 */
   const handlePasteAndParse = () => {
+    smartFocused.value = true
     uni.getClipboardData({
       success: (res) => {
         smartText.value = res.data || ''
@@ -348,7 +356,7 @@
     )
     // #endif
     // #ifdef MP-WEIXIN
-    uni.showToast({ title: '小程序暂不支持', icon: 'none' })
+    uniToast('小程序暂不支持')
     // #endif
   }
 
@@ -368,7 +376,7 @@
         })
       },
       fail: () => {
-        uni.showToast({ title: '获取定位失败', icon: 'none' })
+        uniToast('获取定位失败')
       },
     })
   }
@@ -392,23 +400,23 @@
   /** 表单校验 */
   const validateForm = () => {
     if (!form.name) {
-      uni.showToast({ title: '请输入姓名', icon: 'none' })
+      uniToast('请输入姓名')
       return false
     }
     if (!form.phone) {
-      uni.showToast({ title: '请输入电话', icon: 'none' })
+      uniToast('请输入电话')
       return false
     }
     if (!/^1[3-9]\d{9}$/.test(form.phone)) {
-      uni.showToast({ title: '请输入正确的手机号', icon: 'none' })
+      uniToast('请输入正确的手机号')
       return false
     }
     if (!form.province || !form.city || !form.district) {
-      uni.showToast({ title: '请选择省市区', icon: 'none' })
+      uniToast('请选择省市区')
       return false
     }
     if (!form.detailAddress) {
-      uni.showToast({ title: '请输入详细地址', icon: 'none' })
+      uniToast('请输入详细地址')
       return false
     }
     return true
@@ -437,8 +445,13 @@
     }
 
     // TODO: 调用接口保存地址，接口接入后替换
-    uni.showToast({ title: isEdit.value ? '修改成功' : '新增成功', icon: 'success' })
+    uniToast(isEdit.value ? '修改成功' : '新增成功')
     setTimeout(() => {
+      const addrInfo = {
+        ...params,
+      }
+      setAddressList([...addressList.value, addrInfo])
+      setAddressInfo(addrInfo)
       uni.navigateBack()
     }, 1500)
   }
@@ -447,6 +460,9 @@
   onLoad((options) => {
     if (options?.id) {
       addressId.value = options.id
+      uni.setNavigationBarTitle({
+        title: '编辑地址',
+      })
       // TODO: 根据 id 请求地址详情，回填表单
     }
   })

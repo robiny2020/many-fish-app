@@ -4,14 +4,17 @@
     :showBack="false"
     scrollShow
   />
-  <TopBanner :list="bannerList" />
+  <MfBanner
+    :list="bannerList"
+    height="360rpx"
+  />
   <MainAction />
   <MoreServices :list="serviceList" />
 </template>
 
 <script setup>
-  import { TopBanner, MainAction, MoreServices } from './components'
-  import { NavBar } from '@/components'
+  import { MainAction, MoreServices } from './components'
+  import { NavBar, MfBanner } from '@/components'
   import { usePageScroll } from '@/composables'
 
   const bannerList = ref([

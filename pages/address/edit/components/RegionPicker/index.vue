@@ -155,5 +155,5 @@
 </script>
 
 <style lang="scss" scoped>
-  @import './RegionPicker.scss';
+  @import './index.scss';
 </style>

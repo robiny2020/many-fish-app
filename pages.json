@@ -225,7 +225,7 @@
 		{
 			"path": "pages/address/edit/index",
 			"style": {
-				"navigationBarTitleText": "编辑地址",
+				"navigationBarTitleText": "新增地址",
 				"h5": {
 					"navigationStyle": "custom"
 				}
