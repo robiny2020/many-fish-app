@@ -1,0 +1,84 @@
+.login-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+  padding: 0 60rpx;
+
+  // ==================== Logo + Slogan ====================
+  &__brand {
+    padding-top: 160rpx;
+    padding-bottom: 100rpx;
+  }
+
+  &__logo {
+    width: 180rpx;
+    height: 180rpx;
+    margin-bottom: 32rpx;
+  }
+
+  &__slogan {
+    font-size: 36rpx;
+    font-weight: 600;
+    color: $uni-text-color;
+    letter-spacing: 8rpx;
+  }
+
+  // ==================== 操作区域 ====================
+  &__actions {
+    width: 100%;
+  }
+
+  // 手机号快捷登录按钮（小程序）
+  &__btn-phone {
+    width: 100%;
+    height: 96rpx;
+    line-height: 96rpx;
+    border-radius: 48rpx;
+    background-color: #0275fe;
+    text-align: center;
+    margin-bottom: 28rpx;
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  // 切换到验证码登录按钮（小程序）
+  &__btn-sms {
+    width: 100%;
+    height: 96rpx;
+    border-radius: 48rpx;
+    background-color: #fff;
+    border: 1rpx solid #e5e5e5;
+    margin-bottom: 40rpx;
+  }
+
+  &__btn-sms-text {
+    font-size: 32rpx;
+    font-weight: 500;
+    color: $uni-text-color;
+  }
+
+  // ==================== 底部提示 ====================
+  &__footer {
+    margin-top: auto;
+    padding-bottom: 60rpx;
+    gap: 8rpx;
+  }
+
+  &__footer-text {
+    font-size: 24rpx;
+    color: $uni-text-color-grey;
+  }
+
+  &__footer-service {
+    display: flex;
+    align-items: center;
+  }
+
+  &__footer-phone {
+    font-size: 24rpx;
+    color: $uni-text-color;
+    font-weight: 600;
+  }
+}

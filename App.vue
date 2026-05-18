@@ -1,13 +1,15 @@
 <script setup>
-  import { useSystemStore } from '@/store'
+  import { useSystemStore, useBaseStore } from '@/store'
   import { setupAuth } from '@/utils/auth'
 
   const { initSystemInfoSync } = useSystemStore()
+  const { setStartAppTime } = useBaseStore()
 
   onLaunch((options) => {
     console.log('App Launch', options)
     initSystemInfoSync()
     setupAuth()
+    setStartAppTime()
     initStartParams(options)
   })
   onShow(() => {})

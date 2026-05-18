@@ -1,0 +1,104 @@
+.sms-form {
+  width: 100%;
+  margin-bottom: 40rpx;
+
+  &__input-wrap {
+    width: 100%;
+    height: 100rpx;
+    background-color: #fff;
+    border-radius: 16rpx;
+    padding: 0 32rpx;
+    margin-bottom: 32rpx;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    flex: 1;
+    height: 100%;
+    font-size: 30rpx;
+    color: $uni-text-color;
+  }
+
+  &__input-placeholder {
+    font-size: 30rpx;
+    color: $uni-text-color-placeholder;
+  }
+
+  &__phone-clear {
+    width: 46rpx;
+    height: 46rpx;
+    border-radius: 50%;
+    background-color: #ccc;
+    flex-shrink: 0;
+    margin-left: 16rpx;
+  }
+
+  &__phone-clear-icon {
+    font-size: 22rpx;
+    color: #fff;
+    line-height: 1;
+  }
+
+  &__code-wrap {
+    width: 100%;
+    height: 100rpx;
+    background-color: #fff;
+    border-radius: 16rpx;
+    padding: 0 32rpx;
+    margin-bottom: 32rpx;
+    align-items: center;
+  }
+
+  &__code-input {
+    flex: 1;
+    height: 100%;
+    font-size: 30rpx;
+    color: $uni-text-color;
+  }
+
+  &__code-countdown {
+    flex-shrink: 0;
+    font-size: 26rpx;
+    color: $uni-text-color-grey;
+    margin-left: 16rpx;
+
+    &--active {
+      color: #0275fe;
+    }
+  }
+
+  &__btn-login {
+    width: 100%;
+    height: 96rpx;
+    border-radius: 48rpx;
+    background-color: #0275fe;
+
+    &--disabled {
+      opacity: 0.4;
+    }
+  }
+
+  &__btn-login-text {
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  &__btn-code {
+    width: 100%;
+    height: 96rpx;
+    border-radius: 48rpx;
+    background-color: #0275fe;
+
+    &--disabled {
+      opacity: 0.4;
+    }
+  }
+
+  &__btn-code-text {
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #fff;
+  }
+}

@@ -1,25 +1,24 @@
 <template>
-	<view class="content">
-	
-		<view class="text-area">
-			<text class="title">index</text>
-		</view>
-	
-	</view>
+  <web-view :src="webViewUrl" />
 </template>
 
-<script>
-	export default {
-		data() {
-			return {
-				title: 'Hello',
-			}
-		},
-		onLoad() {},
-		methods: {},
-	}
+<script setup>
+  import { useBaseStore } from '@/store'
+
+  const { startAppTime, platformKey } = storeToRefs(useBaseStore)
+
+  const webViewUrl = ref('')
+
+  onLoad((options) => {
+    let webUrl = options.webUrl
+    if (webUrl.indexOf('?') > -1) {
+      webUrl += `&mf_pk=${platformKey.value}&mf_st=${startAppTime.value}`
+    } else {
+      webUrl += `?mf_pk=${platformKey.value}&mf_st=${startAppTime.value}`
+    }
+
+    webViewUrl.value = webUrl
+  })
 </script>
 
-<style>
-
-</style>
+<style></style>

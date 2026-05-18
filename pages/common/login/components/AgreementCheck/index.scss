@@ -1,0 +1,75 @@
+.agreement-check {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+
+  &--shake {
+    animation: agreement-shake 0.5s ease;
+  }
+
+  &__row {
+    gap: 8rpx;
+  }
+
+  &__box {
+    flex-shrink: 0;
+    width: 32rpx;
+    height: 32rpx;
+    border-radius: 50%;
+    border: 2rpx solid #ccc;
+    box-sizing: border-box;
+    position: relative;
+
+    &--checked {
+      border-color: #0275fe;
+      background-color: #0275fe;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 4rpx;
+        left: 10rpx;
+        width: 7rpx;
+        height: 14rpx;
+        border: 2rpx solid #fff;
+        border-top: none;
+        border-left: none;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &__label {
+    font-size: 24rpx;
+    color: $uni-text-color-grey;
+  }
+
+  &__link {
+    font-size: 24rpx;
+    color: #0275fe;
+  }
+
+  &__sub {
+    display: block;
+    font-size: 22rpx;
+    color: $uni-text-color-grey;
+    margin-top: 4rpx;
+  }
+}
+
+@keyframes agreement-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  50%,
+  90% {
+    transform: translateX(-16rpx);
+  }
+  30%,
+  70% {
+    transform: translateX(16rpx);
+  }
+}
