@@ -24,19 +24,6 @@
     overflow: hidden;
   }
 
-  // 加载更多
-  &__loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 32rpx 0;
-  }
-
-  &__loading-text {
-    font-size: 24rpx;
-    color: #999;
-  }
-
   // 空状态
   &__empty {
     display: flex;

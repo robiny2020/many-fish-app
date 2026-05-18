@@ -32,16 +32,7 @@
     >
       <text class="notify-list__empty-text">暂无消息</text>
     </view>
-
-    <!-- 加载状态 -->
-    <view
-      v-if="loading || hasMore"
-      class="notify-list__loading"
-    >
-      <text class="notify-list__loading-text">
-        {{ loading ? '加载中...' : hasMore ? '上拉加载更多' : '' }}
-      </text>
-    </view>
+    <LoadMore status="no-more" />
   </view>
 </template>
 
@@ -53,7 +44,7 @@
    * - 支持点击跳转关联业务页面
    */
 
-  import { NavBar } from '@/components'
+  import { NavBar, LoadMore } from '@/components'
   import { useMessageStore } from '@/store'
   import { getMessageList, markAsRead } from '@/api/message'
   import MessageItem from './components/MessageItem/index.vue'

@@ -27,6 +27,9 @@ components/
 ├── PhoneLoginButton/
 │   ├── index.vue       # 微信手机号登录按钮组件
 │   └── index.scss      # 组件样式
+├── LoadMore/
+│   ├── index.vue       # LoadMore 加载更多组件
+│   └── index.scss      # 组件样式
 └── index.js            # 统一导出
 ```
 
@@ -41,3 +44,4 @@ components/
 | RecycleOrderForm | [RecycleOrderForm.md](./RecycleOrderForm.md) | 预约回收下单表单（地址、时间、重量、照片） |
 | TimePickerPopup | [TimePickerPopup.md](./TimePickerPopup.md) | 预约上门时间二级选择弹窗 |
 | PhoneLoginButton | [PhoneLoginButton.md](./PhoneLoginButton.md) | 微信手机号快捷登录按钮 |
+| LoadMore | [LoadMore.md](./LoadMore.md) | 列表底部加载状态（more/loading/no-more） |
