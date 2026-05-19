@@ -1,0 +1,81 @@
+.mf-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 0;
+
+  &__icon {
+    position: relative;
+    width: 180rpx;
+    height: 180rpx;
+    margin-bottom: 20rpx;
+
+    // 底部椭圆阴影
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120rpx;
+      height: 16rpx;
+      background: radial-gradient(ellipse, rgba(0, 0, 0, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    // 空盒子主体
+    &::after {
+      content: '';
+      position: absolute;
+      top: 30rpx;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120rpx;
+      height: 100rpx;
+      border: 4rpx solid #dcdee0;
+      border-radius: 12rpx;
+      background-color: #f7f8fa;
+    }
+  }
+
+  // 盒子内部横线装饰
+  &__icon-inner {
+    position: absolute;
+    top: 60rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60rpx;
+    height: 4rpx;
+    background-color: #dcdee0;
+    border-radius: 2rpx;
+    z-index: 1;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 4rpx;
+      background-color: #dcdee0;
+      border-radius: 2rpx;
+    }
+
+    &::before {
+      top: 16rpx;
+      width: 40rpx;
+    }
+
+    &::after {
+      top: 32rpx;
+      width: 24rpx;
+    }
+  }
+
+  &__text {
+    font-size: 28rpx;
+    color: #969799;
+    line-height: 1.4;
+  }
+}

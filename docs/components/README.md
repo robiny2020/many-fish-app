@@ -30,6 +30,9 @@ components/
 ├── LoadMore/
 │   ├── index.vue       # LoadMore 加载更多组件
 │   └── index.scss      # 组件样式
+├── MfEmpty/
+│   ├── index.vue       # MfEmpty 空状态占位组件
+│   └── index.scss      # 组件样式
 └── index.js            # 统一导出
 ```
 
@@ -45,3 +48,4 @@ components/
 | TimePickerPopup | [TimePickerPopup.md](./TimePickerPopup.md) | 预约上门时间二级选择弹窗 |
 | PhoneLoginButton | [PhoneLoginButton.md](./PhoneLoginButton.md) | 微信手机号快捷登录按钮 |
 | LoadMore | [LoadMore.md](./LoadMore.md) | 列表底部加载状态（more/loading/no-more） |
+| MfEmpty | [MfEmpty.md](./MfEmpty.md) | 空状态占位（纯 CSS 图标 + 文字） |
